@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+ {% for i in todo %}
+ <hr>
+ <h2 style="text-align:center;">{{i.title}}</h2>
+ <h2 style="text-align:center;">{{i.description}}</h2>
+ <h2>{{i.date}}</h2>
+ 
+<a href="{% url 'edit' id=i.id %}"><button class="btn btn-primary">Edit</button></a>
+
+
+<a href="{% url 'delete' id=i.id %}"><button class="btn btn-primary">delete</button></a>
+{% if i.is_completed %}
+<a href="{% url 'Mark-complete' id=i.id %}">Mark incomplete</a>
+{% else %}
+<a href="{% url 'Mark-complete' id=i.id %}">Mark complete</a>
+{% endif %}
+{% endfor %}
+ 
+ <br>
+ <p style="text-align:center;" >
+<a href="{% url 'add' %}" >
+   
+    
+    
+ <button class="btn btn-primary">Add</button>
+</a>
+<a href="{% url 'delete_all' %}" >
+   
+    <br> 
+    <br>
+ <button class="btn btn-danger">Delete all</button>
+</a>
+</p>
+
+
+
+
+
+
+
+
+
+
+ {% endblock content %}
